@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GW 厳選 BBQ施設ナビ</title>
+    <title>【シェア用】2026GW版_BBQ施設</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -14,7 +14,7 @@
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            height: 300px;
+            height: 280px;
             max-height: 400px;
         }
         @media (min-width: 768px) {
@@ -23,11 +23,20 @@
             }
         }
         
+        /* フィルターボタン等の横スクロール用（スクロールバー非表示） */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
         .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
-            background: #f5f5f4; 
+            background: #fdfaf3; 
             border-radius: 4px;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
@@ -39,7 +48,7 @@
         }
 
         .fade-in {
-            animation: fadeIn 0.3s ease-in-out;
+            animation: fadeIn 0.4s ease-in-out;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(5px); }
@@ -72,27 +81,80 @@
         }
     </script>
 </head>
-<body class="bg-stone-50 text-stone-800 font-sans leading-relaxed tracking-wide">
+<body class="bg-[#fdfaf3] text-stone-800 font-sans leading-relaxed tracking-wide">
 
     <div class="max-w-6xl mx-auto px-4 py-8 md:py-12">
         
-        <!-- Header -->
+        <!-- Header & Hero Image -->
         <header class="mb-10 text-center">
             <div class="inline-block bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm font-bold mb-3 tracking-widest">GW SPECIAL EDITION</div>
-            <h1 class="text-3xl md:text-4xl font-extrabold text-stone-900 mb-4">厳選 BBQ施設ナビ</h1>
-            <p class="text-stone-600 max-w-2xl mx-auto">
-                「車両不要・完全手ぶら設営・食材持込可・買い出し至便」。厳格な条件をクリアした精鋭6施設を比較・検討できるインタラクティブ・レポートです。ご自身の好みのロケーションに合わせて絞り込み、最適なGWの計画にお役立てください。
+            <h1 class="text-3xl md:text-4xl font-extrabold text-stone-900 mb-6">【シェア用】2026GW版_BBQ施設</h1>
+            
+            <!-- Hero Image -->
+            <div class="w-full max-w-4xl mx-auto mb-6">
+                <div class="h-48 md:h-64 rounded-2xl overflow-hidden shadow-md relative">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80" alt="BBQの美味しそうなお肉" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                </div>
+                <p class="text-[10px] text-stone-400 text-right mt-1 pr-1">※画像はイメージです</p>
+            </div>
+
+            <p class="text-stone-700 max-w-2xl mx-auto">
+                「車両不要・完全手ぶら設営・食材持込可・買い出し至便」。厳格な条件をクリアした神奈川県内の精鋭5施設を比較・検討できるインタラクティブ・レポートです。今年のGWを最高に盛り上げる、絶対に外さないロケーションを厳選しました。
             </p>
         </header>
 
         <!-- Section: Overview Chart -->
-        <section class="bg-white rounded-2xl shadow-sm border border-stone-200 p-6 md:p-8 mb-8">
-            <div class="mb-6">
-                <h2 class="text-xl font-bold text-stone-900 border-b-2 border-amber-600 inline-block pb-1 mb-2">📊 料金目安オーバービュー</h2>
-                <p class="text-sm text-stone-500">各施設の大人1名あたりの最低基本料金（場所代・機材費含む）の比較です。食材費は含まれていません。</p>
+        <section class="bg-white rounded-2xl shadow-sm border border-[#eaddc8] p-6 md:p-8 mb-8">
+            <div class="mb-6 pb-4 border-b border-[#eaddc8]">
+                <h2 class="text-xl font-bold text-stone-900 inline-block mb-3">📊 料金目安オーバービュー</h2>
+                <div class="bg-red-50 text-red-800 p-4 rounded-lg border border-red-200">
+                    <p class="text-sm font-bold mb-1 flex items-center gap-1">
+                        <span>⚠️</span> 記載の料金は「あくまで最低料金の目安」です。
+                    </p>
+                    <p class="text-xs">
+                        BBQ施設の料金は、日程（平日/土日祝/GW等のハイシーズン）、選択するプラン、機材や食材オプションの有無によって大きく変動します。グラフは比較用の最低目安として捉え、必ず各公式サイトで正確な見積もりをご確認ください。
+                    </p>
+                </div>
             </div>
             <div class="chart-container">
                 <canvas id="priceChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Section: Action Items & 総合推奨 -->
+        <section class="mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- アクションアイテム -->
+                <div class="md:col-span-1 flex flex-col gap-4">
+                    <div class="bg-white p-5 rounded-xl shadow-sm border border-[#eaddc8] flex-1">
+                        <div class="text-amber-600 text-2xl mb-2">🗓️</div>
+                        <h3 class="font-bold text-stone-900 mb-2">早期予約の徹底</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed">GWは最繁忙期です。特に話題の最新スポットは予約開始と同時に枠が埋まります。日程が決まり次第、即日の予約確保を強く推奨します。</p>
+                    </div>
+                    <div class="bg-white p-5 rounded-xl shadow-sm border border-[#eaddc8] flex-1">
+                        <div class="text-amber-600 text-2xl mb-2">🛒</div>
+                        <h3 class="font-bold text-stone-900 mb-2">買い出しの役割分担</h3>
+                        <p class="text-xs text-stone-600 leading-relaxed">周辺スーパーも非常に混雑します。事前に「肉・野菜・飲み物」など役割を明確にし、買い出しの時間を抑えることが成功の鍵です。</p>
+                    </div>
+                </div>
+                
+                <!-- 総合推奨エリア -->
+                <div class="md:col-span-2 p-6 md:p-8 bg-white rounded-2xl border border-[#eaddc8] shadow-sm flex flex-col justify-center">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-2xl text-amber-500">👑</span>
+                        <h3 class="font-bold text-stone-900">総括・おすすめの選び方</h3>
+                    </div>
+                    <p class="text-sm text-stone-700 leading-relaxed mb-5">
+                        メンバーの顔ぶれや重視するポイントによって最適な選択は異なります。移動を楽にしたい場合は駅近型、自然を感じたいなら公園型が適しています。
+                        <br><br>
+                        もし今年ならではの新鮮な体験を求めるなら、<strong>2026年にオープンしたばかりの最新施設</strong>を選ぶのも一案です。設備が新しく快適な上、マンネリ化しがちなBBQに新しい驚きをもたらしてくれます。下のボタンから絞り込んで比較してみてください。
+                    </p>
+                    <!-- NEW OPEN フィルターへのショートカットボタン -->
+                    <button onclick="activateNewOpenFilter()" class="inline-flex items-center justify-center gap-2 bg-white border border-red-200 text-red-600 hover:bg-red-50 font-bold py-3 px-5 rounded-xl shadow-sm transition-colors text-sm w-full md:w-auto">
+                        ✨ 2026 NEW OPEN 施設で絞り込む
+                    </button>
+                </div>
             </div>
         </section>
 
@@ -100,49 +162,30 @@
         <section class="mb-12">
             <div class="mb-6">
                 <h2 class="text-xl font-bold text-stone-900 border-b-2 border-teal-600 inline-block pb-1 mb-2">🔍 施設インタラクティブ検索</h2>
-                <p class="text-sm text-stone-500">ロケーションのカテゴリで絞り込み、リストから施設を選択すると詳細情報が表示されます。</p>
+                <p class="text-sm text-stone-600">ロケーションのカテゴリや新着で絞り込み、リストから施設を選択すると詳細な情報とマップが表示されます。</p>
             </div>
 
             <!-- Filters -->
-            <div class="flex flex-wrap gap-2 mb-6" id="filter-container">
-                <button class="filter-btn active px-4 py-2 rounded-full text-sm font-medium transition-colors bg-stone-800 text-white" data-filter="all">すべて表示</button>
-                <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-colors bg-stone-200 text-stone-700 hover:bg-stone-300" data-filter="利便性特化">🏢 利便性特化 (駅直結)</button>
-                <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-colors bg-stone-200 text-stone-700 hover:bg-stone-300" data-filter="海・リゾート">🌊 海・リゾート</button>
-                <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium transition-colors bg-stone-200 text-stone-700 hover:bg-stone-300" data-filter="山・自然">🌲 山・自然</button>
+            <div class="flex overflow-x-auto pb-3 mb-4 gap-2 snap-x hide-scrollbar md:flex-wrap md:overflow-visible" id="filter-container">
+                <button class="filter-btn active whitespace-nowrap snap-start shrink-0 px-5 py-2.5 rounded-full text-sm font-bold transition-colors bg-stone-800 text-white shadow-sm" data-filter="all">すべて表示</button>
+                <button class="filter-btn whitespace-nowrap snap-start shrink-0 px-5 py-2.5 rounded-full text-sm font-bold transition-colors bg-white text-red-600 hover:bg-red-50 border border-red-200" data-filter="new">✨ 2026 NEW OPEN</button>
+                <button class="filter-btn whitespace-nowrap snap-start shrink-0 px-5 py-2.5 rounded-full text-sm font-bold transition-colors bg-white text-stone-700 hover:bg-stone-100 border border-[#eaddc8]" data-filter="利便性特化">🏢 利便性特化 (駅近・直結)</button>
+                <button class="filter-btn whitespace-nowrap snap-start shrink-0 px-5 py-2.5 rounded-full text-sm font-bold transition-colors bg-white text-stone-700 hover:bg-stone-100 border border-[#eaddc8]" data-filter="海・リゾート">🌊 海・リゾート</button>
+                <button class="filter-btn whitespace-nowrap snap-start shrink-0 px-5 py-2.5 rounded-full text-sm font-bold transition-colors bg-white text-stone-700 hover:bg-stone-100 border border-[#eaddc8]" data-filter="山・自然">🌲 山・自然</button>
             </div>
 
             <!-- Explorer Layout -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-6">
                 
-                <!-- List View (Left Column) -->
-                <div class="md:col-span-1 bg-stone-100 rounded-xl p-2 h-[500px] overflow-y-auto custom-scrollbar border border-stone-200" id="list-container">
+                <!-- List View (Left Column / Top on Mobile) -->
+                <div class="md:col-span-1 bg-[#f5efe3] rounded-xl p-2 max-h-[40vh] md:max-h-none md:h-[850px] overflow-y-auto custom-scrollbar border border-[#eaddc8] shadow-inner" id="list-container">
                     <!-- Cards injected by JS -->
                 </div>
 
-                <!-- Detail View (Right Column) -->
-                <div class="md:col-span-2 bg-white rounded-xl shadow-md border border-stone-200 p-6 flex flex-col min-h-[500px]" id="detail-container">
+                <!-- Detail View (Right Column / Bottom on Mobile) -->
+                <div class="md:col-span-2 bg-white rounded-xl shadow-md border border-[#eaddc8] p-5 md:p-8 flex flex-col min-h-[500px]" id="detail-container">
                     <!-- Details injected by JS -->
                 </div>
-            </div>
-        </section>
-
-        <!-- Section: Action Items -->
-        <section class="bg-amber-50 rounded-2xl p-6 md:p-8 border-l-4 border-amber-600">
-            <h2 class="text-xl font-bold text-amber-900 mb-4">💡 GW実施に向けた重要アクションアイテム</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="bg-white p-4 rounded-lg shadow-sm">
-                    <div class="text-amber-600 text-2xl mb-2">🗓️</div>
-                    <h3 class="font-bold text-stone-900 mb-2">早期予約の徹底</h3>
-                    <p class="text-sm text-stone-600">GW（5/1〜5/6）はBBQ施設の最繁忙期です。特に利便性の高い駅直結型、および話題性の高い最新施設は予約開始と同時に枠が埋まります。即日の予約確保を強く推奨します。</p>
-                </div>
-                <div class="bg-white p-4 rounded-lg shadow-sm">
-                    <div class="text-amber-600 text-2xl mb-2">🛒</div>
-                    <h3 class="font-bold text-stone-900 mb-2">買い出しの役割分担</h3>
-                    <p class="text-sm text-stone-600">周辺スーパーも非常に混雑します。事前に「肉係」「野菜・惣菜係」「飲み物係」など役割を明確にし、買い出し時間を最小限に抑えることが快適なBBQ成功の鍵です。</p>
-                </div>
-            </div>
-            <div class="mt-6 p-4 bg-white/60 rounded-lg text-sm text-stone-800">
-                <strong>💡 総合推奨：</strong> 参加者全体の「疲れにくさ」と「会話への集中」を最優先する場合、移動と準備のストレスが皆無な<strong>【利便性特化型】</strong>が最も確実で洗練された選択肢となります。
             </div>
         </section>
 
@@ -154,26 +197,38 @@
         const bbqData = [
             {
                 id: 1,
-                name: "THE BBQ BEER GARDEN in ODAKYU湘南GATE",
+                name: "お祭りBBQビアガーデン ビナウォーク海老名屋台村",
+                mapQuery: "ビナウォーク 海老名",
                 category: "利便性特化",
                 icon: "🏢",
-                url: "https://digiq.jp/portal/location/75218",
-                access: "藤沢駅（南口）直結。徒歩1分。",
-                priceMin: 1980,
-                priceDesc: "約1,980円〜2,200円",
-                foodRules: "持ち込み完全自由。アルコール類の持ち込みも可。",
-                gear: "コンロ、網、トング、皿等の基本機材一式完備。ゴミは施設側で分別回収（基本料金に含む）。炭起こしや後片付けはスタッフが対応。",
+                isNew: true, 
+                isRecommended: false,
+                url: "https://bbq.urban-earth.jp/vinawalk/",
+                imageUrl: "https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?auto=format&fit=crop&w=800&q=80",
+                access: "海老名駅徒歩3分。ビナウォーク3番館 屋上。",
+                stayTime: "約3時間",
+                afterParty: "海老名駅直近のため、駅周辺の居酒屋やビナウォーク内の飲食店への移動が極めてスムーズ。2次会への合流も容易です。",
+                priceMin: 3630,
+                priceDesc: "約3,630円〜（持込コース+屋台追加等）",
+                foodRules: "食材持ち込み完全自由。飲み放題や機材付きの各種プランあり。",
+                gear: "BBQ機材一式完備。手ぶらで楽しめ、屋上には射的や輪投げなどの縁日屋台も併設。準備・片付け不要。",
                 groceryLevel: "最高",
-                groceryDesc: "同じ建物の地下（小田急百貨店デパ地下）で、高品質な精肉や鮮魚、惣菜、お酒まですすべて調達可能。",
-                env: "デパートの屋上。テント屋根が設置されている区画が多く、急な天候変化やGWの日差しにも対応可能。清潔感があり女性にも好評。"
+                groceryDesc: "ビナウォーク内のスーパーや周辺商業施設で新鮮な食材、デパ地下惣菜を直前まで調達可能。ロス皆無。",
+                env: "海老名の街を一望できる屋上の開放的なロケーションで、お祭り気分とBBQを同時に味わえる。"
             },
             {
                 id: 2,
                 name: "ラスカ茅ヶ崎 屋上庭園 バーベキューテラス",
+                mapQuery: "ラスカ茅ヶ崎",
                 category: "利便性特化",
                 icon: "🏢",
-                url: "https://digiq.jp/portal/location/74143",
-                access: "茅ヶ崎駅（北口）直結。徒歩1分。",
+                isNew: false,
+                isRecommended: false,
+                url: "https://sunny.bbqbin.com/",
+                imageUrl: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=800&q=80",
+                access: "茅ヶ崎駅（北口）直結。徒歩1分。（藤沢駅から電車で7分）",
+                stayTime: "約2.5〜3時間",
+                afterParty: "茅ヶ崎駅直結なので、駅周辺の湘南らしいバルや居酒屋への移動に無駄がありません。",
                 priceMin: 1980,
                 priceDesc: "約1,980円〜2,200円",
                 foodRules: "持ち込み完全自由。",
@@ -185,62 +240,65 @@
             {
                 id: 3,
                 name: "THE BBQ BEACH in KUGENUMA（鵠沼海岸）",
+                mapQuery: "THE BBQ BEACH in KUGENUMA",
                 category: "海・リゾート",
                 icon: "🌊",
+                isNew: true, 
+                isRecommended: true, // 激推しフラグ
                 url: "https://digiq.jp/portal/location/90349",
+                imageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
                 access: "小田急江ノ島線「鵠沼海岸駅」から徒歩約10分。",
+                stayTime: "約3〜4時間",
+                afterParty: "そのまま海岸を散策するか、藤沢駅まで戻ってからの居酒屋・バーでの2次会が定番ルートです。",
                 priceMin: 2200,
-                priceDesc: "約2,200円〜3,300円（ソファ席などの区画グレードによる）",
+                priceDesc: "約2,200円〜3,300円（区画による）",
                 foodRules: "持ち込み完全自由。",
                 gear: "ラグジュアリーな機材一式完備。ゴミ回収費用込み。手ぶらで帰宅可能。",
                 groceryLevel: "良",
                 groceryDesc: "駅から施設に向かう商店街の道中に「そうてつローゼン 鵠沼店」があり、動線上でスムーズな買い出しが可能。",
-                env: "今年4月にオープンしたばかりの最新施設。全席ソファスタイルのラグジュアリーな空間で、海風を感じながらお洒落なBBQが可能。日よけのタープ完備。"
+                env: "全席ソファスタイルのラグジュアリーな空間で、海風を感じながらお洒落なBBQが可能。日よけのタープ完備。"
             },
             {
                 id: 4,
-                name: "BBQ & Glamping THE BINGE 江ノ島",
+                name: "ヘミングウェイ江ノ島 本店・屋上BBQ",
+                mapQuery: "ヘミングウェイ江ノ島 本店",
                 category: "海・リゾート",
                 icon: "🌊",
-                url: "https://thebinge.jp/",
+                isNew: false,
+                isRecommended: false,
+                url: "https://hemingway.cafe/bbq/",
+                imageUrl: "https://images.unsplash.com/photo-1544148103-0773bf10d330?auto=format&fit=crop&w=800&q=80",
                 access: "小田急江ノ島線「片瀬江ノ島駅」から徒歩約3分。",
+                stayTime: "約2〜3時間",
+                afterParty: "江ノ島駅・片瀬江ノ島駅周辺のカフェ・バーや、海沿いのレストランへのはしごに最適な立地です。",
                 priceMin: 3000,
-                priceDesc: "約3,000円〜4,000円程度（貸切プラン制・人数による）",
-                foodRules: "持ち込み完全自由。",
-                gear: "グランピングテント付きの機材一式。ゴミは分別にて現地処理可能（有料オプションの場合あり、事前確認推奨）。",
+                priceDesc: "約3,000円〜",
+                foodRules: "食材持ち込み可能。レストラン提供のステーキや海鮮を頼むプランもあり。",
+                gear: "コンロ、トング、食器など一式完備。面倒な炭の火おこしや後片付けはすべて不要。",
                 groceryLevel: "良",
-                groceryDesc: "片瀬江ノ島駅近くにスーパー「やまか江の島店」があり、必要なものは現地調達が可能。",
-                env: "屋上の貸切グランピングスタイル。プライベート空間が保たれており、江の島エリアの混雑を避けてリラックスできる。"
+                groceryDesc: "片瀬江ノ島駅の近くにスーパー「やまか江の島店」があり、食材や飲料の現地調達が可能。",
+                env: "川沿いに建つ地中海リゾート風の建物の屋上。湘南の海、川、江の島を一望できる開放的でリラックスした空間。"
             },
             {
                 id: 5,
                 name: "こども自然公園 バーベキュー広場",
+                mapQuery: "こども自然公園 バーベキュー広場",
                 category: "山・自然",
                 icon: "🌲",
-                url: "https://yokohama-cu.com/kodomo/",
+                isNew: false,
+                isRecommended: false,
+                url: "https://yokohamagrill.com/kodomosizen/park/",
+                imageUrl: "https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?auto=format&fit=crop&w=800&q=80",
                 access: "相鉄いずみ野線「南万騎が原駅」から徒歩約7分。",
+                stayTime: "約4〜5時間 (半日)",
+                afterParty: "公園で遊んだ後、横浜駅や二俣川駅など主要駅へ電車で移動してからの打ち上げがおすすめです。",
                 priceMin: 2000,
-                priceDesc: "約2,000円〜2,500円（入場無料、区画と機材のパッケージ料金）",
+                priceDesc: "約2,000円〜2,500円",
                 foodRules: "持ち込み完全自由。",
-                gear: "テント、コンロなどのツールセットレンタルあり。セッティングは自分で行う必要があるが、返却時の面倒な洗浄は不要。ゴミは有料のゴミ袋を購入することで回収してもらえる。",
+                gear: "テント、コンロなどのツールセットレンタルあり。セッティングは自分で行う必要があるが、返却時の面倒な洗浄は不要。ゴミは有料袋で回収可能。",
                 groceryLevel: "良",
                 groceryDesc: "南万騎が原駅の目の前に「そうてつローゼン 南まきがはら店」があり、買い出しをしてから徒歩で公園へ直行可能。",
                 env: "広大な森と池がある自然豊かな公園。本格的なキャンプ場の雰囲気を味わいながら、駅からわずか7分という奇跡的な立地。"
-            },
-            {
-                id: 6,
-                name: "引地台公園 バーベキュー広場",
-                category: "山・自然",
-                icon: "🌲",
-                url: "https://www.kanagawaparks.com/yamato/hikichidai/bbq.html",
-                access: "小田急江ノ島線「桜ヶ丘駅」から徒歩約15分。",
-                priceMin: 1500,
-                priceDesc: "約1,500円〜2,000円（機材レンタルパッケージ）",
-                foodRules: "持ち込み完全自由。",
-                gear: "指定業者（BBQ太郎など）による機材レンタルプランあり。設営・火起こし・ゴミ回収までパッケージ化されているプランを選択可能。",
-                groceryLevel: "可",
-                groceryDesc: "桜ヶ丘駅周辺に「いなげや」等のスーパーがあり、買い出し後に向かうことが可能。徒歩15分のため、荷物の持ち運びには少し工夫が必要。",
-                env: "豊かな森に囲まれた緑あふれる公園。木陰が多く、春先の心地よい気候のなかで森林浴をしながらBBQが楽しめる。"
             }
         ];
 
@@ -256,6 +314,15 @@
         const detailContainer = document.getElementById('detail-container');
         const filterBtns = document.querySelectorAll('.filter-btn');
 
+        // Global Function for the NEW OPEN filter button
+        window.activateNewOpenFilter = function() {
+            const newBtn = document.querySelector('button[data-filter="new"]');
+            if (newBtn) {
+                newBtn.click();
+            }
+            document.getElementById('filter-container').scrollIntoView({behavior: 'smooth', block: 'start'});
+        };
+
         // Initialize Application
         function init() {
             setupEventListeners();
@@ -270,16 +337,27 @@
                 btn.addEventListener('click', (e) => {
                     // Update Active Button Styling
                     filterBtns.forEach(b => {
-                        b.classList.remove('bg-stone-800', 'text-white');
-                        b.classList.add('bg-stone-200', 'text-stone-700');
+                        b.classList.remove('bg-stone-800', 'text-white', 'shadow-sm', 'border-transparent', 'bg-red-600');
+                        
+                        if (b.getAttribute('data-filter') === 'new') {
+                            b.classList.add('bg-white', 'text-red-600', 'border-red-200');
+                        } else {
+                            b.classList.add('bg-white', 'text-stone-700', 'border-[#eaddc8]');
+                        }
                     });
-                    e.target.classList.remove('bg-stone-200', 'text-stone-700');
-                    e.target.classList.add('bg-stone-800', 'text-white');
+
+                    // Set active style for clicked button
+                    if (e.target.getAttribute('data-filter') === 'new') {
+                        e.target.classList.remove('bg-white', 'text-red-600', 'border-red-200');
+                        e.target.classList.add('bg-red-600', 'text-white', 'shadow-sm', 'border-transparent');
+                    } else {
+                        e.target.classList.remove('bg-white', 'text-stone-700', 'border-[#eaddc8]');
+                        e.target.classList.add('bg-stone-800', 'text-white', 'shadow-sm', 'border-transparent');
+                    }
 
                     // Update State & Re-render
                     state.filter = e.target.getAttribute('data-filter');
                     
-                    // Automatically select first item in filtered list
                     const filteredData = getFilteredData();
                     if(filteredData.length > 0) {
                         state.selectedId = filteredData[0].id;
@@ -295,6 +373,7 @@
         // Data Helper
         function getFilteredData() {
             if (state.filter === 'all') return bbqData;
+            if (state.filter === 'new') return bbqData.filter(item => item.isNew);
             return bbqData.filter(item => item.category === state.filter);
         }
 
@@ -305,24 +384,43 @@
             
             data.forEach(item => {
                 const isSelected = item.id === state.selectedId;
-                const activeClass = isSelected ? 'bg-white border-amber-500 shadow-md ring-1 ring-amber-500' : 'bg-white/50 border-transparent hover:bg-white cursor-pointer';
                 
+                // おすすめ・通常のスタイリング
+                let activeClass = '';
+                if (item.isRecommended) {
+                    activeClass = isSelected ? 'bg-amber-50 border-amber-400 shadow-md ring-2 ring-amber-400/50' : 'bg-gradient-to-br from-white to-amber-50/50 border-amber-200 hover:border-amber-400 cursor-pointer shadow-sm';
+                } else {
+                    activeClass = isSelected ? 'bg-white border-teal-500 shadow-md ring-2 ring-teal-500/30' : 'bg-white/60 border-transparent hover:bg-white cursor-pointer shadow-sm';
+                }
+                
+                const newBadge = item.isNew ? `<span class="bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full ml-1">NEW</span>` : '';
+                const recBadge = item.isRecommended ? `<span class="bg-gradient-to-r from-amber-400 to-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full ml-1 shadow-sm">👑 激推し</span>` : '';
+
                 const card = document.createElement('div');
-                card.className = `p-4 mb-3 rounded-lg border transition-all duration-200 ${activeClass}`;
+                card.className = `p-4 mb-3 rounded-xl border transition-all duration-200 ${activeClass}`;
                 card.onclick = () => {
                     state.selectedId = item.id;
                     renderList();
                     renderDetails();
+                    
+                    if (window.innerWidth < 768) {
+                        setTimeout(() => {
+                            const detailEl = document.getElementById('detail-container');
+                            const y = detailEl.getBoundingClientRect().top + window.scrollY - 16;
+                            window.scrollTo({ top: y, behavior: 'smooth' });
+                        }, 50);
+                    }
                 };
 
                 card.innerHTML = `
                     <div class="flex items-start justify-between">
                         <div class="flex-1">
-                            <div class="text-xs font-bold text-teal-600 mb-1 flex items-center gap-1">
+                            <div class="text-xs font-bold ${item.isRecommended ? 'text-amber-700' : 'text-teal-600'} mb-1 flex items-center flex-wrap gap-1">
                                 <span>${item.icon}</span> ${item.category}
+                                ${newBadge} ${recBadge}
                             </div>
                             <h3 class="font-bold text-stone-900 leading-tight mb-2">${item.name}</h3>
-                            <div class="text-xs text-stone-500 bg-stone-100 inline-block px-2 py-1 rounded">
+                            <div class="text-xs text-stone-600 bg-white inline-block px-2 py-1 rounded border ${item.isRecommended ? 'border-amber-200' : 'border-[#eaddc8]'}">
                                 買い出し: 【${item.groceryLevel}】
                             </div>
                         </div>
@@ -337,64 +435,106 @@
             const item = bbqData.find(d => d.id === state.selectedId);
             if (!item) return;
 
-            // Grocery color logic
             let groceryColor = "bg-stone-200 text-stone-700";
             if(item.groceryLevel === "最高") groceryColor = "bg-amber-100 text-amber-800 border-amber-200";
             if(item.groceryLevel === "良") groceryColor = "bg-teal-50 text-teal-700 border-teal-200";
 
+            const newBadge = item.isNew ? `<span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">NEW OPEN</span>` : '';
+            
+            // おすすめ用の強調ヘッダー＆ボタンデザイン
+            const recHeader = item.isRecommended ? `
+                <div class="bg-gradient-to-r from-amber-100 to-orange-100 border border-amber-300 text-amber-900 px-4 py-3 rounded-lg font-bold text-sm mb-4 flex items-center gap-2 shadow-sm">
+                    <span class="text-xl animate-bounce">👑</span> 幹事さん必見！今年一番のおすすめ施設です！
+                </div>
+            ` : '';
+
+            const btnClass = item.isRecommended 
+                ? "bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white shadow-md transform hover:scale-105 border-0"
+                : "bg-stone-800 hover:bg-stone-700 text-white shadow-sm border border-stone-800";
+
             detailContainer.innerHTML = `
-                <div class="fade-in flex-1">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="text-2xl">${item.icon}</span>
-                        <span class="bg-stone-100 text-stone-600 px-3 py-1 rounded-full text-xs font-bold border border-stone-200">${item.category}</span>
+                <div class="fade-in flex-1 flex flex-col">
+                    <!-- スマホ用：リストへ戻るボタン -->
+                    <button onclick="document.getElementById('filter-container').scrollIntoView({behavior: 'smooth', block: 'start'})" class="md:hidden flex items-center gap-1 text-stone-600 bg-stone-100 hover:bg-stone-200 px-4 py-2 rounded-full text-xs font-bold mb-5 w-fit transition-colors border border-stone-200">
+                        <span class="text-lg leading-none">↑</span> 施設一覧へ戻る
+                    </button>
+
+                    ${recHeader}
+
+                    <!-- イメージ画像 -->
+                    <div class="w-full h-40 md:h-56 rounded-xl overflow-hidden shadow-sm relative">
+                        <img src="${item.imageUrl}" alt="${item.name}のイメージ" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-stone-900/60 to-transparent"></div>
+                        <div class="absolute bottom-3 left-4 flex items-center gap-2 flex-wrap">
+                            <span class="text-xl">${item.icon}</span>
+                            <span class="bg-white/90 text-stone-800 px-3 py-1 rounded-full text-xs font-bold">${item.category}</span>
+                            ${newBadge}
+                        </div>
                     </div>
+                    <p class="text-[10px] text-stone-400 text-right mt-1 mb-5 pr-1">※画像はイメージです</p>
                     
                     <h2 class="text-2xl md:text-3xl font-extrabold text-stone-900 mb-4 leading-tight">${item.name}</h2>
                     
-                    <a href="${item.url}" target="_blank" class="inline-flex items-center gap-1 text-sm text-white bg-stone-800 hover:bg-stone-700 px-4 py-2 rounded-lg transition-colors mb-6">
-                        公式サイトを見る <span class="text-xs">↗</span>
+                    <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1 text-sm px-5 py-3 rounded-xl transition-all mb-6 w-full md:w-fit font-bold ${btnClass}">
+                        公式サイトで詳細を見る <span class="text-xs">↗</span>
                     </a>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                        <div class="bg-stone-50 p-4 rounded-xl border border-stone-100">
-                            <div class="text-xs font-bold text-stone-500 mb-1 uppercase tracking-wider">アクセス</div>
-                            <div class="font-medium text-stone-800">${item.access}</div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-6">
+                        <div class="bg-stone-50 p-4 rounded-xl border border-[#eaddc8]">
+                            <div class="text-xs font-bold text-stone-500 mb-1 uppercase tracking-wider flex items-center gap-1"><span>🚉</span> アクセス</div>
+                            <div class="font-medium text-stone-800 text-sm leading-tight">${item.access}</div>
                         </div>
-                        <div class="bg-stone-50 p-4 rounded-xl border border-stone-100">
-                            <div class="text-xs font-bold text-stone-500 mb-1 uppercase tracking-wider">料金目安 (1名)</div>
-                            <div class="font-bold text-amber-700 text-lg">${item.priceDesc}</div>
+                        <div class="bg-stone-50 p-4 rounded-xl border border-[#eaddc8]">
+                            <div class="text-xs font-bold text-stone-500 mb-1 uppercase tracking-wider flex items-center gap-1"><span>⏳</span> おすすめ滞在</div>
+                            <div class="font-medium text-stone-800 text-sm leading-tight">${item.stayTime}</div>
+                        </div>
+                        <div class="bg-red-50 p-4 rounded-xl border border-red-200 relative">
+                            <div class="text-[10px] font-bold text-red-600 mb-1 uppercase tracking-wider">⚠️ 料金目安(必ず公式確認)</div>
+                            <div class="font-bold text-amber-700 text-base leading-tight">${item.priceDesc}</div>
                         </div>
                     </div>
 
-                    <div class="space-y-5">
+                    <div class="space-y-5 flex-1">
                         <div>
-                            <h4 class="text-sm font-bold text-stone-900 border-b border-stone-200 pb-1 mb-2 flex items-center gap-2">
+                            <h4 class="text-sm font-bold text-stone-900 border-b border-[#eaddc8] pb-1 mb-2 flex items-center gap-2">
                                 <span>🥩</span> 食材・ルール
                             </h4>
-                            <p class="text-sm text-stone-600">${item.foodRules}</p>
+                            <p class="text-sm text-stone-700">${item.foodRules}</p>
                         </div>
                         
                         <div>
-                            <h4 class="text-sm font-bold text-stone-900 border-b border-stone-200 pb-1 mb-2 flex items-center gap-2">
+                            <h4 class="text-sm font-bold text-stone-900 border-b border-[#eaddc8] pb-1 mb-2 flex items-center gap-2">
                                 <span>🛒</span> 買い出し利便性
                                 <span class="text-xs border px-2 py-0.5 rounded ml-2 ${groceryColor}">評価：${item.groceryLevel}</span>
                             </h4>
-                            <p class="text-sm text-stone-600">${item.groceryDesc}</p>
+                            <p class="text-sm text-stone-700">${item.groceryDesc}</p>
                         </div>
 
                         <div>
-                            <h4 class="text-sm font-bold text-stone-900 border-b border-stone-200 pb-1 mb-2 flex items-center gap-2">
-                                <span>⛺</span> 機材・片付け
+                            <h4 class="text-sm font-bold text-stone-900 border-b border-[#eaddc8] pb-1 mb-2 flex items-center gap-2">
+                                <span>🍻</span> 2次会への導線
                             </h4>
-                            <p class="text-sm text-stone-600">${item.gear}</p>
+                            <p class="text-sm text-stone-700">${item.afterParty}</p>
                         </div>
 
                         <div>
-                            <h4 class="text-sm font-bold text-stone-900 border-b border-stone-200 pb-1 mb-2 flex items-center gap-2">
+                            <h4 class="text-sm font-bold text-stone-900 border-b border-[#eaddc8] pb-1 mb-2 flex items-center gap-2">
                                 <span>🌤️</span> 環境・特徴
                             </h4>
-                            <p class="text-sm text-stone-600 leading-relaxed">${item.env}</p>
+                            <p class="text-sm text-stone-700 leading-relaxed">${item.env}</p>
                         </div>
+                    </div>
+
+                    <!-- Google Maps Embed -->
+                    <div class="mt-8 rounded-xl overflow-hidden border border-[#eaddc8] h-64 md:h-72 shadow-inner">
+                        <iframe 
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0" 
+                            style="border:0" 
+                            src="https://maps.google.co.jp/maps?output=embed&q=${encodeURIComponent(item.mapQuery)}&z=15" 
+                            allowfullscreen>
+                        </iframe>
                     </div>
                 </div>
             `;
@@ -404,7 +544,6 @@
         function initChart() {
             const ctx = document.getElementById('priceChart').getContext('2d');
             
-            // Format labels with line breaks for longer names
             const data = getFilteredData();
             
             state.chartInstance = new Chart(ctx, {
@@ -412,7 +551,7 @@
                 data: getChartDataConfig(data),
                 options: {
                     responsive: true,
-                    maintainAspectRatio: false, // Required for custom container sizing
+                    maintainAspectRatio: false,
                     indexAxis: 'y', // Horizontal bar chart
                     plugins: {
                         legend: { display: false },
@@ -423,7 +562,7 @@
                             padding: 12,
                             callbacks: {
                                 label: function(context) {
-                                    return `目安: ${context.raw.toLocaleString()}円〜`;
+                                    return `最低目安: ${context.raw.toLocaleString()}円〜`;
                                 }
                             }
                         }
@@ -436,18 +575,19 @@
                                 color: '#57534e',
                                 callback: function(value) { return value + '円'; }
                             },
-                            title: { display: true, text: '大人1名 基本料金 (円)', color: '#78716c', font: {size: 12} }
+                            title: { display: true, text: '大人1名 最低基本料金の目安 (円)', color: '#78716c', font: {size: 12} }
                         },
                         y: {
                             grid: { display: false },
                             ticks: { 
                                 color: '#292524',
-                                font: { weight: 'bold', size: 11 },
+                                font: { weight: 'bold', size: window.innerWidth < 768 ? 10 : 11 },
                                 callback: function(value) {
                                     // Truncate long labels for chart readability
                                     const label = this.getLabelForValue(value);
-                                    if(label.length > 15) {
-                                        return label.substring(0, 15) + '...';
+                                    const maxLength = window.innerWidth < 768 ? 10 : 15;
+                                    if(label.length > maxLength) {
+                                        return label.substring(0, maxLength) + '...';
                                     }
                                     return label;
                                 }
@@ -470,15 +610,17 @@
             return {
                 labels: data.map(d => d.name),
                 datasets: [{
-                    label: '最低基本料金',
+                    label: '最低基本料金の目安',
                     data: data.map(d => d.priceMin),
                     backgroundColor: data.map(d => {
                         // Color code by category
-                        if(d.category === '利便性特化') return 'rgba(217, 119, 6, 0.7)'; // amber
-                        if(d.category === '海・リゾート') return 'rgba(13, 148, 136, 0.7)'; // teal
-                        return 'rgba(63, 98, 18, 0.7)'; // green for mountain
+                        if(d.isRecommended) return 'rgba(245, 158, 11, 0.8)'; // アンバー
+                        if(d.category === '利便性特化') return 'rgba(217, 119, 6, 0.5)';
+                        if(d.category === '海・リゾート') return 'rgba(13, 148, 136, 0.5)';
+                        return 'rgba(63, 98, 18, 0.5)';
                     }),
                     borderColor: data.map(d => {
+                        if(d.isRecommended) return 'rgba(245, 158, 11, 1)';
                         if(d.category === '利便性特化') return 'rgba(217, 119, 6, 1)';
                         if(d.category === '海・リゾート') return 'rgba(13, 148, 136, 1)';
                         return 'rgba(63, 98, 18, 1)';
