@@ -3,13 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【シェア用】2026GW版_BBQ施設</title>
+    <title>【2026GW_share版】BBQ候補地選定</title>
+    
+    <meta property="og:title" content="【2026GW_share版】BBQ候補地選定">
+    <meta property="og:description" content="「車両不要・完全手ぶら設営・食材持込可・買い出し至便」の条件をクリアした上で神奈川県内の施設を比較・検討できるインタラクティブ・レポートです。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://example.com/bbq-navi/"> 
+    <meta property="og:image" content="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=1200&q=80">
+    <meta name="twitter:card" content="summary_large_image">
+    
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍺</text></svg>">
+    <link rel="apple-touch-icon" href="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=180&h=180&q=80">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         /* Custom styling for chart container and scrollbars */
-        .chart-container {
+       .chart-container {
             position: relative;
             width: 100%;
             max-width: 700px;
@@ -19,41 +29,51 @@
             max-height: 400px;
         }
         @media (min-width: 768px) {
-            .chart-container {
+           .chart-container {
                 height: 350px;
             }
         }
         
         /* フィルターボタン等の横スクロール用（スクロールバー非表示） */
-        .hide-scrollbar::-webkit-scrollbar {
+       .hide-scrollbar::-webkit-scrollbar {
             display: none;
         }
-        .hide-scrollbar {
+       .hide-scrollbar {
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
 
-        .custom-scrollbar::-webkit-scrollbar {
+       .custom-scrollbar::-webkit-scrollbar {
             width: 6px;
         }
-        .custom-scrollbar::-webkit-scrollbar-track {
+       .custom-scrollbar::-webkit-scrollbar-track {
             background: #fdfaf3; 
             border-radius: 4px;
         }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
+       .custom-scrollbar::-webkit-scrollbar-thumb {
             background: #d6d3d1; 
             border-radius: 4px;
         }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+       .custom-scrollbar::-webkit-scrollbar-thumb:hover {
             background: #a8a29e; 
         }
 
-        .fade-in {
+       .fade-in {
             animation: fadeIn 0.4s ease-in-out;
         }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(5px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* アニメーション */
+        .pulse-soft {
+            animation: pulseSoft 2s infinite;
+        }
+        @keyframes pulseSoft {
+            0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
         }
     </style>
     <script>
@@ -89,7 +109,7 @@
         <!-- Header & Hero Image -->
         <header class="mb-10 text-center">
             <div class="inline-block bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm font-bold mb-3 tracking-widest">GW SPECIAL EDITION</div>
-            <h1 class="text-3xl md:text-4xl font-extrabold text-stone-900 mb-6">【シェア用】2026GW版_BBQ施設</h1>
+            <h1 class="text-3xl md:text-4xl font-extrabold text-stone-900 mb-6">【2026GW_share版】BBQ候補地選定</h1>
             
             <!-- Hero Image -->
             <div class="w-full max-w-4xl mx-auto mb-6">
@@ -100,8 +120,8 @@
                 <p class="text-[10px] text-stone-400 text-right mt-1 pr-1">※画像はイメージです</p>
             </div>
 
-            <p class="text-stone-700 max-w-2xl mx-auto">
-                「車両不要・完全手ぶら設営・食材持込可・買い出し至便」。厳格な条件をクリアした神奈川県内の精鋭5施設を比較・検討できるインタラクティブ・レポートです。今年のGWを最高に盛り上げる、絶対に外さないロケーションを厳選しました。
+            <p class="text-stone-700 max-w-2xl mx-auto mb-6">
+                「車両不要・完全手ぶら設営・食材持込可・買い出し至便」の条件をクリアした上で神奈川県内の施設を比較・検討できるインタラクティブ・レポートです。今年のGWを最高に盛り上げる、絶対に外さないロケーションを厳選しました。
             </p>
         </header>
 
@@ -109,9 +129,9 @@
         <section class="bg-white rounded-2xl shadow-sm border border-[#eaddc8] p-6 md:p-8 mb-8">
             <div class="mb-6 pb-4 border-b border-[#eaddc8]">
                 <h2 class="text-xl font-bold text-stone-900 inline-block mb-3">📊 料金目安オーバービュー</h2>
-                <div class="bg-red-50 text-red-800 p-4 rounded-lg border border-red-200">
+                <div class="bg-stone-50 text-stone-700 p-4 rounded-lg border border-[#eaddc8]">
                     <p class="text-sm font-bold mb-1 flex items-center gap-1">
-                        <span>⚠️</span> 記載の料金は「あくまで最低料金の目安」です。
+                        <span>💡</span> 記載の料金は「あくまで最低料金の目安」です。
                     </p>
                     <p class="text-xs">
                         BBQ施設の料金は、日程（平日/土日祝/GW等のハイシーズン）、選択するプラン、機材や食材オプションの有無によって大きく変動します。グラフは比較用の最低目安として捉え、必ず各公式サイトで正確な見積もりをご確認ください。
@@ -125,38 +145,101 @@
 
         <!-- Section: Action Items & 総合推奨 -->
         <section class="mb-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 <!-- アクションアイテム -->
-                <div class="md:col-span-1 flex flex-col gap-4">
-                    <div class="bg-white p-5 rounded-xl shadow-sm border border-[#eaddc8] flex-1">
-                        <div class="text-amber-600 text-2xl mb-2">🗓️</div>
-                        <h3 class="font-bold text-stone-900 mb-2">早期予約の徹底</h3>
-                        <p class="text-xs text-stone-600 leading-relaxed">GWは最繁忙期です。特に話題の最新スポットは予約開始と同時に枠が埋まります。日程が決まり次第、即日の予約確保を強く推奨します。</p>
-                    </div>
-                    <div class="bg-white p-5 rounded-xl shadow-sm border border-[#eaddc8] flex-1">
-                        <div class="text-amber-600 text-2xl mb-2">🛒</div>
-                        <h3 class="font-bold text-stone-900 mb-2">買い出しの役割分担</h3>
-                        <p class="text-xs text-stone-600 leading-relaxed">周辺スーパーも非常に混雑します。事前に「肉・野菜・飲み物」など役割を明確にし、買い出しの時間を抑えることが成功の鍵です。</p>
-                    </div>
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-[#eaddc8] flex flex-col">
+                    <div class="text-amber-600 text-2xl mb-2">🗓️</div>
+                    <h3 class="font-bold text-stone-900 mb-2">早期予約の徹底</h3>
+                    <p class="text-xs text-stone-600 leading-relaxed flex-1">GWは最繁忙期です。特に話題の最新スポットは予約開始と同時に枠が埋まります。日程が決まり次第、即日の予約確保を強く推奨します。</p>
                 </div>
-                
-                <!-- 総合推奨エリア -->
-                <div class="md:col-span-2 p-6 md:p-8 bg-white rounded-2xl border border-[#eaddc8] shadow-sm flex flex-col justify-center">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="text-2xl text-amber-500">👑</span>
-                        <h3 class="font-bold text-stone-900">総括・おすすめの選び方</h3>
-                    </div>
-                    <p class="text-sm text-stone-700 leading-relaxed mb-5">
-                        メンバーの顔ぶれや重視するポイントによって最適な選択は異なります。移動を楽にしたい場合は駅近型、自然を感じたいなら公園型が適しています。
-                        <br><br>
-                        もし今年ならではの新鮮な体験を求めるなら、<strong>2026年にオープンしたばかりの最新施設</strong>を選ぶのも一案です。設備が新しく快適な上、マンネリ化しがちなBBQに新しい驚きをもたらしてくれます。下のボタンから絞り込んで比較してみてください。
-                    </p>
-                    <!-- NEW OPEN フィルターへのショートカットボタン -->
-                    <button onclick="activateNewOpenFilter()" class="inline-flex items-center justify-center gap-2 bg-white border border-red-200 text-red-600 hover:bg-red-50 font-bold py-3 px-5 rounded-xl shadow-sm transition-colors text-sm w-full md:w-auto">
-                        ✨ 2026 NEW OPEN 施設で絞り込む
-                    </button>
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-[#eaddc8] flex flex-col">
+                    <div class="text-amber-600 text-2xl mb-2">🛒</div>
+                    <h3 class="font-bold text-stone-900 mb-2">買い出しの役割分担</h3>
+                    <p class="text-xs text-stone-600 leading-relaxed flex-1">周辺スーパーも非常に混雑します。事前に「肉・野菜・飲み物」など役割を明確にし、買い出しの時間を抑えることが成功の鍵です。</p>
+                </div>
+                <div class="bg-white p-5 rounded-xl shadow-sm border border-[#eaddc8] flex flex-col">
+                    <div class="text-amber-600 text-2xl mb-2">🌤️</div>
+                    <h3 class="font-bold text-stone-900 mb-2">天気と服装の備え</h3>
+                    <p class="text-xs text-stone-600 leading-relaxed flex-1">屋上や海辺は風が強く、夕方以降は急に冷え込むことがあります。日差し対策と合わせて、サッと羽織れるアウターを1枚持参すると安心です。</p>
                 </div>
             </div>
+            
+            <!-- 天気予報エリア -->
+            <div class="mb-6 p-5 bg-white rounded-xl border border-[#eaddc8] shadow-sm">
+                <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+                    <div class="flex items-center gap-2">
+                        <span class="text-xl">⛅</span>
+                        <h3 class="font-bold text-stone-900 text-sm md:text-base">GW 神奈川エリア 天気予報 (目安)</h3>
+                    </div>
+                    <!-- Yahoo!天気リンク -->
+                    <a href="https://weather.yahoo.co.jp/weather/jp/14/" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-blue-600 hover:text-blue-800 bg-blue-50 px-3 py-1.5 rounded-full border border-blue-200 transition-colors flex items-center gap-1">
+                        Yahoo!天気で最新を確認 <span class="text-[10px]">↗</span>
+                    </a>
+                </div>
+                <div class="flex overflow-x-auto gap-3 pb-2 hide-scrollbar">
+                    <!-- モックアップデータ -->
+                    <div class="flex flex-col items-center p-3 bg-[#fdfaf3] rounded-lg min-w-[75px] border border-[#eaddc8]">
+                        <span class="text-[10px] font-bold text-stone-500 mb-1">5/1 (金)</span>
+                        <span class="text-2xl mb-1">☀️</span>
+                        <span class="text-xs font-bold text-stone-800">22℃</span>
+                    </div>
+                    <div class="flex flex-col items-center p-3 bg-[#fdfaf3] rounded-lg min-w-[75px] border border-[#eaddc8]">
+                        <span class="text-[10px] font-bold text-stone-500 mb-1">5/2 (土)</span>
+                        <span class="text-2xl mb-1">⛅</span>
+                        <span class="text-xs font-bold text-stone-800">24℃</span>
+                    </div>
+                    <div class="flex flex-col items-center p-3 bg-[#fdfaf3] rounded-lg min-w-[75px] border border-[#eaddc8]">
+                        <span class="text-[10px] font-bold text-stone-500 mb-1">5/3 (日)</span>
+                        <span class="text-2xl mb-1">☀️</span>
+                        <span class="text-xs font-bold text-stone-800">25℃</span>
+                    </div>
+                    <div class="flex flex-col items-center p-3 bg-[#fdfaf3] rounded-lg min-w-[75px] border border-[#eaddc8]">
+                        <span class="text-[10px] font-bold text-stone-500 mb-1">5/4 (月)</span>
+                        <span class="text-2xl mb-1">☁️</span>
+                        <span class="text-xs font-bold text-stone-800">21℃</span>
+                    </div>
+                    <div class="flex flex-col items-center p-3 bg-[#fdfaf3] rounded-lg min-w-[75px] border border-[#eaddc8]">
+                        <span class="text-[10px] font-bold text-stone-500 mb-1">5/5 (火)</span>
+                        <span class="text-2xl mb-1">☀️</span>
+                        <span class="text-xs font-bold text-stone-800">23℃</span>
+                    </div>
+                    <div class="flex flex-col items-center p-3 bg-[#fdfaf3] rounded-lg min-w-[75px] border border-[#eaddc8]">
+                        <span class="text-[10px] font-bold text-stone-500 mb-1">5/6 (水)</span>
+                        <span class="text-2xl mb-1">⛅</span>
+                        <span class="text-xs font-bold text-stone-800">22℃</span>
+                    </div>
+                </div>
+                <p class="text-[10px] text-stone-500 mt-2 text-right">※表示の天気・気温は例年の傾向を示すイメージです。必ずリンク先で最新情報をご確認ください。(Webサーバーのみでリアルタイムの情報同期が面倒だったので)
+                </p>
+            </div>
+
+            <!-- 総合推奨エリア -->
+            <div class="p-6 md:p-8 bg-white rounded-2xl border border-[#eaddc8] shadow-sm flex flex-col justify-center items-start mb-8">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-2xl text-amber-500">👑</span>
+                    <h3 class="font-bold text-stone-900">総括・おすすめの選び方</h3>
+                </div>
+                <p class="text-sm text-stone-700 leading-relaxed mb-5">
+                    メンバーの顔ぶれや重視するポイントによって最適な選択は異なります。移動を楽にしたい場合は駅近型、自然を感じたいなら公園型が適しています。
+                    <br><br>
+                    もし今年ならではの新鮮な体験を求めるなら、<strong>2026年にオープンしたばかりの最新施設</strong>を選ぶのも一案です。設備が新しく快適な上、マンネリ化しがちなBBQに新しい驚きをもたらしてくれます。
+                    <br><br>
+                    <span class="inline-block bg-stone-50 p-3 rounded-lg border border-[#eaddc8] text-stone-800 w-full">
+                        あまり遠くまでBBQしに遠征するのは面倒なので近場だと嬉しいです！！<br>
+                        他に良さげな場所の候補などがあれば、アンケートに書いていただくか、幹事に直接共有してください！
+                    </span>
+                </p>
+                <!-- ボタンエリア -->
+                <div class="flex flex-wrap gap-3 w-full">
+                    <button onclick="activateNewOpenFilter()" class="inline-flex items-center justify-center gap-2 bg-white border border-red-200 text-red-600 hover:bg-red-50 font-bold py-3 px-5 rounded-xl shadow-sm transition-colors text-sm flex-1 md:flex-none">
+                        ✨ 2026 NEW OPEN で絞り込む
+                    </button>
+                    <a href="https://docs.google.com/forms/d/1c-ccl6SQrBHkPoR1oeOV0XjASrEeOtgMk2qb0--JSic/viewform" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-stone-800 hover:bg-stone-700 text-white font-bold py-3 px-5 rounded-xl shadow-sm transition-colors text-sm flex-1 md:flex-none">
+                        📋 アンケート・候補地を共有する
+                    </a>
+                </div>
+            </div>
+
         </section>
 
         <!-- Section: Interactive Explorer -->
@@ -245,7 +328,7 @@
                 category: "海・リゾート",
                 icon: "🌊",
                 isNew: true, 
-                isRecommended: true, // 激推しフラグ
+                isRecommended: true,
                 url: "https://digiq.jp/portal/location/90349",
                 imageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
                 access: "小田急江ノ島線「鵠沼海岸駅」から徒歩約10分。",
@@ -300,6 +383,27 @@
                 groceryLevel: "良",
                 groceryDesc: "南万騎が原駅の目の前に「そうてつローゼン 南まきがはら店」があり、買い出しをしてから徒歩で公園へ直行可能。",
                 env: "広大な森と池がある自然豊かな公園。本格的なキャンプ場の雰囲気を味わいながら、駅からわずか7分という奇跡的な立地。"
+            },
+            {
+                id: 6,
+                name: "玄海田公園 バーベキュー場",
+                mapQuery: "玄海田公園",
+                category: "山・自然",
+                icon: "🌲",
+                isNew: false,
+                isRecommended: false,
+                url: "https://digiq.jp/portal/location/73733",
+                imageUrl: "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=800&q=80",
+                access: "JR横浜線「長津田駅」・「十日市場駅」より市営バス。「玄海田」または「公園前」下車。",
+                stayTime: "約4時間 (半日)",
+                afterParty: "長津田駅や町田駅へバス・電車で出れば、居酒屋等の選択肢が豊富にあります。",
+                priceMin: 2200,
+                priceDesc: "約2,200円〜2,500円（機材レンタルパッケージ利用時）",
+                foodRules: "食材・飲料の持ち込み完全自由。",
+                gear: "テントやコンロ一式が揃うパッケージあり。器材の洗浄は不要、ゴミも有料回収してもらえるため身軽に帰宅可能。",
+                groceryLevel: "最高",
+                groceryDesc: "BBQ場から徒歩すぐの場所に大型商業施設「アピタ長津田店」があり、お肉やお酒まで完璧に揃う最強の買い出し環境。",
+                env: "横浜市内とは思えないほど緑に囲まれた広大な公園。芝生広場やアスレチックもあり、自然を感じながらのんびり過ごせます。"
             }
         ];
 
@@ -389,13 +493,13 @@
                 // おすすめ・通常のスタイリング
                 let activeClass = '';
                 if (item.isRecommended) {
-                    activeClass = isSelected ? 'bg-amber-50 border-amber-400 shadow-md ring-2 ring-amber-400/50' : 'bg-gradient-to-br from-white to-amber-50/50 border-amber-200 hover:border-amber-400 cursor-pointer shadow-sm';
+                    activeClass = isSelected? 'bg-amber-50 border-amber-400 shadow-md ring-2 ring-amber-400/50' : 'bg-gradient-to-br from-white to-amber-50/50 border-amber-200 hover:border-amber-400 cursor-pointer shadow-sm';
                 } else {
-                    activeClass = isSelected ? 'bg-white border-teal-500 shadow-md ring-2 ring-teal-500/30' : 'bg-white/60 border-transparent hover:bg-white cursor-pointer shadow-sm';
+                    activeClass = isSelected? 'bg-white border-teal-500 shadow-md ring-2 ring-teal-500/30' : 'bg-white/60 border-transparent hover:bg-white cursor-pointer shadow-sm';
                 }
                 
-                const newBadge = item.isNew ? `<span class="bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full ml-1">NEW</span>` : '';
-                const recBadge = item.isRecommended ? `<span class="bg-gradient-to-r from-amber-400 to-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full ml-1 shadow-sm">👑 激推し</span>` : '';
+                const newBadge = item.isNew? `<span class="bg-red-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full ml-1">NEW</span>` : '';
+                const recBadge = item.isRecommended? `<span class="bg-gradient-to-r from-amber-400 to-orange-500 text-white text-[10px] font-bold px-2 py-0.5 rounded-full ml-1 shadow-sm">👑 激推し</span>` : '';
 
                 const card = document.createElement('div');
                 card.className = `p-4 mb-3 rounded-xl border transition-all duration-200 ${activeClass}`;
@@ -416,12 +520,12 @@
                 card.innerHTML = `
                     <div class="flex items-start justify-between">
                         <div class="flex-1">
-                            <div class="text-xs font-bold ${item.isRecommended ? 'text-amber-700' : 'text-teal-600'} mb-1 flex items-center flex-wrap gap-1">
+                            <div class="text-xs font-bold ${item.isRecommended? 'text-amber-700' : 'text-teal-600'} mb-1 flex items-center flex-wrap gap-1">
                                 <span>${item.icon}</span> ${item.category}
                                 ${newBadge} ${recBadge}
                             </div>
                             <h3 class="font-bold text-stone-900 leading-tight mb-2">${item.name}</h3>
-                            <div class="text-xs text-stone-600 bg-white inline-block px-2 py-1 rounded border ${item.isRecommended ? 'border-amber-200' : 'border-[#eaddc8]'}">
+                            <div class="text-xs text-stone-600 bg-white inline-block px-2 py-1 rounded border ${item.isRecommended? 'border-amber-200' : 'border-[#eaddc8]'}">
                                 買い出し: 【${item.groceryLevel}】
                             </div>
                         </div>
@@ -440,29 +544,27 @@
             if(item.groceryLevel === "最高") groceryColor = "bg-amber-100 text-amber-800 border-amber-200";
             if(item.groceryLevel === "良") groceryColor = "bg-teal-50 text-teal-700 border-teal-200";
 
-            const newBadge = item.isNew ? `<span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">NEW OPEN</span>` : '';
+            const newBadge = item.isNew? `<span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">NEW OPEN</span>` : '';
             
             // おすすめ用の強調ヘッダー＆ボタンデザイン
-            const recHeader = item.isRecommended ? `
+            const recHeader = item.isRecommended? `
                 <div class="bg-gradient-to-r from-amber-100 to-orange-100 border border-amber-300 text-amber-900 px-4 py-3 rounded-lg font-bold text-sm mb-4 flex items-center gap-2 shadow-sm">
                     <span class="text-xl animate-bounce">👑</span> 幹事さん必見！今年一番のおすすめ施設です！
                 </div>
             ` : '';
 
             const btnClass = item.isRecommended 
-                ? "bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white shadow-md transform hover:scale-105 border-0"
+               ? "bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white shadow-md transform hover:scale-105 border-0"
                 : "bg-stone-800 hover:bg-stone-700 text-white shadow-sm border border-stone-800";
 
             detailContainer.innerHTML = `
                 <div class="fade-in flex-1 flex flex-col">
-                    <!-- スマホ用：リストへ戻るボタン -->
                     <button onclick="document.getElementById('filter-container').scrollIntoView({behavior: 'smooth', block: 'start'})" class="md:hidden flex items-center gap-1 text-stone-600 bg-stone-100 hover:bg-stone-200 px-4 py-2 rounded-full text-xs font-bold mb-5 w-fit transition-colors border border-stone-200">
                         <span class="text-lg leading-none">↑</span> 施設一覧へ戻る
                     </button>
 
                     ${recHeader}
 
-                    <!-- イメージ画像 -->
                     <div class="w-full h-40 md:h-56 rounded-xl overflow-hidden shadow-sm relative">
                         <img src="${item.imageUrl}" alt="${item.name}のイメージ" class="w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-t from-stone-900/60 to-transparent"></div>
@@ -489,8 +591,8 @@
                             <div class="text-xs font-bold text-stone-500 mb-1 uppercase tracking-wider flex items-center gap-1"><span>⏳</span> おすすめ滞在</div>
                             <div class="font-medium text-stone-800 text-sm leading-tight">${item.stayTime}</div>
                         </div>
-                        <div class="bg-red-50 p-4 rounded-xl border border-red-200 relative">
-                            <div class="text-[10px] font-bold text-red-600 mb-1 uppercase tracking-wider">⚠️ 料金目安(必ず公式確認)</div>
+                        <div class="bg-stone-50 p-4 rounded-xl border border-[#eaddc8] relative">
+                            <div class="text-[10px] font-bold text-stone-500 mb-1 uppercase tracking-wider">💡 料金目安(必ず公式確認)</div>
                             <div class="font-bold text-amber-700 text-base leading-tight">${item.priceDesc}</div>
                         </div>
                     </div>
@@ -526,7 +628,6 @@
                         </div>
                     </div>
 
-                    <!-- Google Maps Embed -->
                     <div class="mt-8 rounded-xl overflow-hidden border border-[#eaddc8] h-64 md:h-72 shadow-inner">
                         <iframe 
                             width="100%" 
@@ -615,7 +716,7 @@
                     data: data.map(d => d.priceMin),
                     backgroundColor: data.map(d => {
                         // Color code by category
-                        if(d.isRecommended) return 'rgba(245, 158, 11, 0.8)'; // アンバー
+                        if(d.isRecommended) return 'rgba(245, 158, 11, 0.8)';
                         if(d.category === '利便性特化') return 'rgba(217, 119, 6, 0.5)';
                         if(d.category === '海・リゾート') return 'rgba(13, 148, 136, 0.5)';
                         return 'rgba(63, 98, 18, 0.5)';
