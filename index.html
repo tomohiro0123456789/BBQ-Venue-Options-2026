@@ -92,7 +92,7 @@
         }
     </script>
 </head>
-<body class="bg-[#fdfaf3] text-stone-800 font-sans leading-relaxed tracking-wide">
+<body class="bg-[#fdfaf3] text-stone-800 font-sans leading-relaxed tracking-wide transition-colors duration-300">
 
     <div class="max-w-6xl mx-auto px-4 py-8 md:py-12">
         
@@ -115,7 +115,7 @@
             </p>
         </header>
 
-        <!-- 【NEW ORDER 1】 Section: 総括・おすすめの選び方（目的の提示） -->
+        <!-- 【変更】Section: 総括・おすすめの選び方（目的とアンケート誘導を最初に） -->
         <section class="mb-8">
             <div class="p-6 md:p-8 bg-white rounded-2xl border border-[#eaddc8] shadow-sm flex flex-col justify-center items-start">
                 <div class="flex items-center gap-2 mb-3">
@@ -125,7 +125,7 @@
                 <p class="text-sm text-stone-700 leading-relaxed mb-5">
                     メンバーの顔ぶれや重視するポイントによって最適な選択は異なります。移動を楽にしたい場合は駅近型、自然を感じたいなら公園型が適しています。
                     <br><br>
-                    もし今年ならではの新鮮な体験を求めるなら、<strong>2026年にオープンしたばかりの最新施設</strong>を選ぶのも一案です。設備が新しく快適な上、マンネリ化しがちなBBQに新しい驚きをもたらしてくれます。下のボタンから絞り込んで比較してみてください。
+                    もし今年ならではの新鮮な体験を求めるなら、<strong>2026年にオープンしたばかりの最新施設</strong>を選ぶのも一案です。設備が新しく快適な上、マンネリ化しがちなBBQに新しい驚きをもたらしてくれます。下のリストから絞り込んで比較してみてください。
                     <br><br>
                     <span class="inline-block bg-stone-50 p-4 rounded-xl border border-[#eaddc8] text-stone-800 w-full shadow-inner">
                         あまり遠くまでBBQしに遠征するのは面倒なので近場だと嬉しいです！！<br>
@@ -144,7 +144,7 @@
             </div>
         </section>
 
-        <!-- 【NEW ORDER 2】 Section: Overview Chart（予算感のインプット） -->
+        <!-- Section: Overview Chart（前提知識1） -->
         <section class="bg-white rounded-2xl shadow-sm border border-[#eaddc8] p-6 md:p-8 mb-8">
             <div class="mb-6 pb-2">
                 <h2 class="text-xl font-bold text-stone-900 inline-block">📊 料金目安オーバービュー</h2>
@@ -156,14 +156,14 @@
 
             <!-- 注釈枠 -->
             <div class="bg-[#e6d8c3] text-stone-800 p-3 rounded-xl border border-[#d3c3a9] shadow-inner">
-                <p class="text-[10px] leading-relaxed">
+                <p class="text-[10px] md:text-xs leading-relaxed">
                     <span class="font-bold text-amber-800">💡 記載の料金は「あくまで最低料金の目安」です。</span><br>
                     BBQ施設の料金は、日程（平日/土日祝/GW等のハイシーズン）、選択するプラン、機材や食材オプションの有無によって大きく変動します。グラフは比較用の最低目安として捉え、必ず各公式サイトで正確な見積もりをご確認ください。
                 </p>
             </div>
         </section>
 
-        <!-- 【NEW ORDER 3】 Section: Information（当日の環境と注意点のインプット） -->
+        <!-- Section: Action Items & Weather（前提知識2） -->
         <section class="mb-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 <!-- アクションアイテム -->
@@ -191,6 +191,7 @@
                         <span class="text-xl">🌦️</span>
                         <h3 class="font-bold text-stone-900 text-sm md:text-base">GW 神奈川エリア 天気予報 (目安)</h3>
                     </div>
+                    <!-- Yahoo!天気リンク -->
                     <a href="https://weather.yahoo.co.jp/weather/jp/14/" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-blue-600 hover:text-blue-800 bg-blue-50 px-3 py-1.5 rounded-full border border-blue-200 transition-colors flex items-center gap-1">
                         Yahoo!天気で最新を確認 <span class="text-[10px]">↗</span>
                     </a>
@@ -249,14 +250,14 @@
             </div>
         </section>
 
-        <!-- 【NEW ORDER 4】 Section: Interactive Explorer（具体的な施設選び） -->
+        <!-- Section: Interactive Explorer（具体的な検討） -->
         <section class="mb-12">
-            <!-- 並び替え機能 -->
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
                 <div>
                     <h2 class="text-xl font-bold text-stone-900 border-b-2 border-teal-600 inline-block pb-1 mb-2">🔍 施設インタラクティブ検索</h2>
                     <p class="text-sm text-stone-600">ロケーションのカテゴリや新着で絞り込み、リストから施設を選択すると詳細な情報とマップが表示されます。</p>
                 </div>
+                <!-- ソート機能 -->
                 <div class="flex items-center gap-2 shrink-0">
                     <label for="sort-select" class="text-xs font-bold text-stone-500">並び替え:</label>
                     <select id="sort-select" class="text-sm font-bold bg-white border border-[#eaddc8] text-stone-700 py-2 px-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-amber-400 shadow-sm cursor-pointer">
@@ -276,15 +277,19 @@
             </div>
 
             <!-- Explorer Layout -->
-            <div class="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-6 items-start">
+            <div class="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-6 items-start relative">
                 
-                <!-- List View -->
-                <div class="md:col-span-1 bg-[#f5efe3] rounded-xl p-2 w-full md:h-auto max-h-[50vh] md:max-h-[800px] overflow-y-auto custom-scrollbar border border-[#eaddc8] shadow-inner" id="list-container">
+                <!-- List View (PC: 左カラム / スマホ: ベース) -->
+                <div class="md:col-span-1 bg-[#f5efe3] rounded-xl p-2 w-full md:h-auto max-h-[60vh] md:max-h-[800px] overflow-y-auto custom-scrollbar border border-[#eaddc8] shadow-inner" id="list-container">
                     <!-- Cards injected by JS -->
                 </div>
 
-                <!-- Detail View -->
-                <div class="md:col-span-2 bg-white rounded-xl shadow-md border border-[#eaddc8] p-5 md:p-8 flex flex-col w-full min-h-fit" id="detail-container">
+                <!-- スマホ用モーダルの背景オーバーレイ -->
+                <div id="detail-modal-backdrop" class="md:hidden fixed inset-0 bg-stone-900/60 z-40 hidden transition-opacity duration-300 opacity-0" onclick="closeDetailModal()"></div>
+
+                <!-- Detail View (PC: 右カラム / スマホ: ボトムシート型モーダル) -->
+                <!-- スマホ時は画面下部に固定し、下からスライドして表示される設定 -->
+                <div class="md:col-span-2 bg-white md:rounded-xl rounded-t-3xl shadow-2xl md:shadow-md border-t md:border border-[#eaddc8] p-5 md:p-8 flex flex-col w-full h-[85vh] md:h-auto md:min-h-fit fixed md:static bottom-0 left-0 z-50 transform translate-y-full md:translate-y-0 transition-transform duration-300 overflow-y-auto" id="detail-container">
                     <!-- Details injected by JS -->
                 </div>
             </div>
@@ -436,11 +441,11 @@
             }
         ];
 
-        // State Management (初期選択をID:3 KUGENUMAに設定)
+        // State Management
         let state = {
             filter: 'all',
             sort: 'default',
-            selectedId: 3, 
+            selectedId: 3, // KUGENUMAを初期選択
             chartInstance: null
         };
 
@@ -457,6 +462,39 @@
                 newBtn.click();
             }
             document.getElementById('filter-container').scrollIntoView({behavior: 'smooth', block: 'start'});
+        };
+
+        // Detail Modal Functions (For Mobile)
+        window.openDetailModal = function() {
+            if (window.innerWidth < 768) {
+                const backdrop = document.getElementById('detail-modal-backdrop');
+                const detail = document.getElementById('detail-container');
+                
+                backdrop.classList.remove('hidden');
+                // 強制リフロー
+                void backdrop.offsetWidth;
+                
+                backdrop.classList.remove('opacity-0');
+                detail.classList.remove('translate-y-full');
+                
+                // 背景のスクロールを防止
+                document.body.style.overflow = 'hidden';
+            }
+        };
+
+        window.closeDetailModal = function() {
+            if (window.innerWidth < 768) {
+                const backdrop = document.getElementById('detail-modal-backdrop');
+                const detail = document.getElementById('detail-container');
+                
+                backdrop.classList.add('opacity-0');
+                detail.classList.add('translate-y-full');
+                document.body.style.overflow = '';
+                
+                setTimeout(() => {
+                    backdrop.classList.add('hidden');
+                }, 300); // tailwind duration-300
+            }
         };
 
         // Initialize Application
@@ -493,7 +531,6 @@
 
                     // Update State & Re-render
                     state.filter = e.target.getAttribute('data-filter');
-                    
                     updateView();
                 });
             });
@@ -534,7 +571,7 @@
             if (state.sort === 'priceAsc') {
                 data.sort((a, b) => a.priceMin - b.priceMin);
             } else {
-                // おすすめ順: KUGENUMAがトップに来るように
+                // おすすめ順: isRecommendedがtrueの施設（KUGENUMA）が一番上に来るように
                 data.sort((a, b) => {
                     if (a.isRecommended === b.isRecommended) {
                         return a.id - b.id;
@@ -571,14 +608,8 @@
                     state.selectedId = item.id;
                     renderList();
                     renderDetails();
-                    
-                    if (window.innerWidth < 768) {
-                        setTimeout(() => {
-                            const detailEl = document.getElementById('detail-container');
-                            const y = detailEl.getBoundingClientRect().top + window.scrollY - 16;
-                            window.scrollTo({ top: y, behavior: 'smooth' });
-                        }, 50);
-                    }
+                    // スマホ版の場合はボトムシートモーダルを開く
+                    openDetailModal();
                 };
 
                 card.innerHTML = `
@@ -628,10 +659,14 @@
             const mapRouteUrl = `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(item.name + ' ' + item.mapQuery)}`;
 
             detailContainer.innerHTML = `
-                <div class="fade-in flex-1 flex flex-col">
-                    <button onclick="document.getElementById('filter-container').scrollIntoView({behavior: 'smooth', block: 'start'})" class="md:hidden flex items-center gap-1 text-stone-600 bg-stone-100 hover:bg-stone-200 px-4 py-2 rounded-full text-xs font-bold mb-5 w-fit transition-colors border border-stone-200">
-                        <span class="text-lg leading-none">↑</span> 施設一覧へ戻る
-                    </button>
+                <div class="fade-in flex-1 flex flex-col relative pb-8 md:pb-0">
+                    <!-- スマホ用：ドラッグバー＆閉じるボタン (PCでは非表示) -->
+                    <div class="md:hidden sticky -top-5 bg-white z-10 pt-2 pb-4 -mx-5 px-5 flex justify-center items-center rounded-t-3xl cursor-pointer" onclick="closeDetailModal()">
+                        <div class="w-12 h-1.5 bg-stone-300 rounded-full"></div>
+                        <button class="absolute right-5 text-stone-400 hover:text-stone-600 p-2">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                        </button>
+                    </div>
 
                     ${recHeader}
 
@@ -648,6 +683,7 @@
                     
                     <h2 class="text-2xl md:text-3xl font-extrabold text-stone-900 mb-4 leading-tight">${item.name}</h2>
                     
+                    <!-- ボタングループ (ルート検索追加) -->
                     <div class="flex flex-wrap gap-2 mb-6 w-full">
                         <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="flex-1 md:flex-none inline-flex items-center justify-center gap-1 text-sm px-5 py-3 rounded-xl transition-all font-bold ${btnClass}">
                             公式サイトで詳細を見る <span class="text-xs">↗</span>
@@ -666,8 +702,8 @@
                             <div class="text-[10px] font-bold text-stone-500 mb-1 uppercase tracking-wider flex items-center gap-1"><span>⏳</span> おすすめ滞在</div>
                             <div class="font-medium text-stone-800 text-sm leading-tight">${item.stayTime}</div>
                         </div>
-                        <div class="bg-stone-50 p-4 rounded-xl border border-[#eaddc8] relative">
-                            <div class="text-[10px] font-bold text-stone-500 mb-1 uppercase tracking-wider">💡 料金目安(必ず公式確認)</div>
+                        <div class="bg-[#f3ede0] p-4 rounded-xl border border-[#e4d9c1] relative">
+                            <div class="text-[10px] font-bold text-stone-500 mb-1 uppercase tracking-wider">💡 予算のめやす</div>
                             <div class="font-bold text-amber-700 text-base leading-tight">${item.priceDesc}</div>
                         </div>
                     </div>
@@ -684,7 +720,7 @@
                         </div>
                     </div>
 
-                    <div class="space-y-5 flex-1">
+                    <div class="space-y-5 flex-1 border-t border-[#eaddc8] pt-5">
                         <div>
                             <h4 class="text-sm font-bold text-stone-900 border-b border-[#eaddc8] pb-1 mb-2 flex items-center gap-2">
                                 <span>🥩</span> 食材・ルール
