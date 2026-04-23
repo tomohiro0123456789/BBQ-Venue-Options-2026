@@ -65,16 +65,6 @@
             from { opacity: 0; transform: translateY(5px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        /* アニメーション */
-        .pulse-soft {
-            animation: pulseSoft 2s infinite;
-        }
-        @keyframes pulseSoft {
-            0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.4); }
-            70% { box-shadow: 0 0 0 10px rgba(245, 158, 11, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
-        }
     </style>
     <script>
         tailwind.config = {
@@ -125,7 +115,36 @@
             </p>
         </header>
 
-        <!-- Section: Overview Chart -->
+        <!-- 【NEW ORDER 1】 Section: 総括・おすすめの選び方（目的の提示） -->
+        <section class="mb-8">
+            <div class="p-6 md:p-8 bg-white rounded-2xl border border-[#eaddc8] shadow-sm flex flex-col justify-center items-start">
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="text-2xl text-amber-500">👑</span>
+                    <h3 class="font-bold text-stone-900">総括・おすすめの選び方</h3>
+                </div>
+                <p class="text-sm text-stone-700 leading-relaxed mb-5">
+                    メンバーの顔ぶれや重視するポイントによって最適な選択は異なります。移動を楽にしたい場合は駅近型、自然を感じたいなら公園型が適しています。
+                    <br><br>
+                    もし今年ならではの新鮮な体験を求めるなら、<strong>2026年にオープンしたばかりの最新施設</strong>を選ぶのも一案です。設備が新しく快適な上、マンネリ化しがちなBBQに新しい驚きをもたらしてくれます。下のボタンから絞り込んで比較してみてください。
+                    <br><br>
+                    <span class="inline-block bg-stone-50 p-4 rounded-xl border border-[#eaddc8] text-stone-800 w-full shadow-inner">
+                        あまり遠くまでBBQしに遠征するのは面倒なので近場だと嬉しいです！！<br>
+                        他に良さげな場所の候補などがあれば、アンケートに書いていただくか、幹事に直接共有してください！
+                    </span>
+                </p>
+                <!-- ボタンエリア -->
+                <div class="flex flex-wrap gap-3 w-full">
+                    <button onclick="activateNewOpenFilter()" class="inline-flex items-center justify-center gap-2 bg-white border border-red-200 text-red-600 hover:bg-red-50 font-bold py-3 px-5 rounded-xl shadow-sm transition-colors text-sm flex-1 md:flex-none">
+                        ✨ 2026 NEW OPEN で絞り込む
+                    </button>
+                    <a href="https://docs.google.com/forms/d/1c-ccl6SQrBHkPoR1oeOV0XjASrEeOtgMk2qb0--JSic/viewform" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-stone-800 hover:bg-stone-700 text-white font-bold py-3 px-5 rounded-xl shadow-sm transition-colors text-sm flex-1 md:flex-none">
+                        📋 アンケート・候補地を共有する
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 【NEW ORDER 2】 Section: Overview Chart（予算感のインプット） -->
         <section class="bg-white rounded-2xl shadow-sm border border-[#eaddc8] p-6 md:p-8 mb-8">
             <div class="mb-6 pb-2">
                 <h2 class="text-xl font-bold text-stone-900 inline-block">📊 料金目安オーバービュー</h2>
@@ -135,7 +154,7 @@
                 <canvas id="priceChart"></canvas>
             </div>
 
-            <!-- 注釈枠を下に移動し、色を濃いベージュに変更 -->
+            <!-- 注釈枠 -->
             <div class="bg-[#e6d8c3] text-stone-800 p-3 rounded-xl border border-[#d3c3a9] shadow-inner">
                 <p class="text-[10px] leading-relaxed">
                     <span class="font-bold text-amber-800">💡 記載の料金は「あくまで最低料金の目安」です。</span><br>
@@ -144,7 +163,7 @@
             </div>
         </section>
 
-        <!-- Section: Action Items & 総合推奨 -->
+        <!-- 【NEW ORDER 3】 Section: Information（当日の環境と注意点のインプット） -->
         <section class="mb-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 <!-- アクションアイテム -->
@@ -165,20 +184,18 @@
                 </div>
             </div>
             
-            <!-- 天気予報エリア（画像に基づき気温を追加、5/3-6の太陽を排除したアイコンに更新） -->
-            <div class="mb-6 p-5 bg-white rounded-xl border border-[#eaddc8] shadow-sm">
+            <!-- 天気予報エリア -->
+            <div class="p-5 bg-white rounded-xl border border-[#eaddc8] shadow-sm">
                 <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
                     <div class="flex items-center gap-2">
                         <span class="text-xl">🌦️</span>
                         <h3 class="font-bold text-stone-900 text-sm md:text-base">GW 神奈川エリア 天気予報 (目安)</h3>
                     </div>
-                    <!-- Yahoo!天気リンク -->
                     <a href="https://weather.yahoo.co.jp/weather/jp/14/" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-blue-600 hover:text-blue-800 bg-blue-50 px-3 py-1.5 rounded-full border border-blue-200 transition-colors flex items-center gap-1">
                         Yahoo!天気で最新を確認 <span class="text-[10px]">↗</span>
                     </a>
                 </div>
                 <div class="flex overflow-x-auto gap-3 pb-2 hide-scrollbar">
-                    <!-- 画像データ反映 -->
                     <div class="flex flex-col items-center p-3 bg-[#fdfaf3] rounded-lg min-w-[85px] border border-[#eaddc8]">
                         <span class="text-[10px] font-bold text-stone-500 mb-1">5/1 (金)</span>
                         <span class="text-2xl mb-1">🌤️</span>
@@ -230,37 +247,9 @@
                 </div>
                 <p class="text-[10px] text-stone-500 mt-2 text-right">※表示の天気・気温は最新の予報に基づくイメージです。必ずリンク先で最新情報をご確認ください。</p>
             </div>
-
-            <!-- 総合推奨エリア -->
-            <div class="p-6 md:p-8 bg-white rounded-2xl border border-[#eaddc8] shadow-sm flex flex-col justify-center items-start mb-8">
-                <div class="flex items-center gap-2 mb-3">
-                    <span class="text-2xl text-amber-500">👑</span>
-                    <h3 class="font-bold text-stone-900">総括・おすすめの選び方</h3>
-                </div>
-                <p class="text-sm text-stone-700 leading-relaxed mb-5">
-                    メンバーの顔ぶれや重視するポイントによって最適な選択は異なります。移動を楽にしたい場合は駅近型、自然を感じたいなら公園型が適しています。
-                    <br><br>
-                    もし今年ならではの新鮮な体験を求めるなら、<strong>2026年にオープンしたばかりの最新施設</strong>を選ぶのも一案です。設備が新しく快適な上、マンネリ化しがちなBBQに新しい驚きをもたらしてくれます。
-                    <br><br>
-                    <span class="inline-block bg-stone-50 p-3 rounded-lg border border-[#eaddc8] text-stone-800 w-full">
-                        あまり遠くまでBBQしに遠征するのは面倒なので近場だと嬉しいです！！<br>
-                        他に良さげな場所の候補などがあれば、アンケートに書いていただくか、幹事に直接共有してください！
-                    </span>
-                </p>
-                <!-- ボタンエリア -->
-                <div class="flex flex-wrap gap-3 w-full">
-                    <button onclick="activateNewOpenFilter()" class="inline-flex items-center justify-center gap-2 bg-white border border-red-200 text-red-600 hover:bg-red-50 font-bold py-3 px-5 rounded-xl shadow-sm transition-colors text-sm flex-1 md:flex-none">
-                        ✨ 2026 NEW OPEN で絞り込む
-                    </button>
-                    <a href="https://docs.google.com/forms/d/1c-ccl6SQrBHkPoR1oeOV0XjASrEeOtgMk2qb0--JSic/viewform" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-2 bg-stone-800 hover:bg-stone-700 text-white font-bold py-3 px-5 rounded-xl shadow-sm transition-colors text-sm flex-1 md:flex-none">
-                        📋 アンケート・候補地を共有する
-                    </a>
-                </div>
-            </div>
-
         </section>
 
-        <!-- Section: Interactive Explorer -->
+        <!-- 【NEW ORDER 4】 Section: Interactive Explorer（具体的な施設選び） -->
         <section class="mb-12">
             <!-- 並び替え機能 -->
             <div class="flex flex-col md:flex-row md:items-end justify-between mb-6 gap-4">
@@ -289,12 +278,12 @@
             <!-- Explorer Layout -->
             <div class="flex flex-col md:grid md:grid-cols-3 gap-4 md:gap-6 items-start">
                 
-                <!-- List View (Left Column / Top on Mobile) -->
+                <!-- List View -->
                 <div class="md:col-span-1 bg-[#f5efe3] rounded-xl p-2 w-full md:h-auto max-h-[50vh] md:max-h-[800px] overflow-y-auto custom-scrollbar border border-[#eaddc8] shadow-inner" id="list-container">
                     <!-- Cards injected by JS -->
                 </div>
 
-                <!-- Detail View (Right Column / Bottom on Mobile) -->
+                <!-- Detail View -->
                 <div class="md:col-span-2 bg-white rounded-xl shadow-md border border-[#eaddc8] p-5 md:p-8 flex flex-col w-full min-h-fit" id="detail-container">
                     <!-- Details injected by JS -->
                 </div>
@@ -321,7 +310,7 @@
                 stayTime: "約3時間",
                 afterParty: "海老名駅直近のため、駅周辺の居酒屋やビナウォーク内の飲食店への移動が極めてスムーズ。2次会への合流も容易です。",
                 priceMin: 3630,
-                priceDesc: "約3,630円〜",
+                priceDesc: "約3,630円〜（持込コース+屋台追加等）",
                 foodRules: "食材持ち込み完全自由。飲み放題や機材付きの各種プランあり。",
                 gear: "BBQ機材一式完備。手ぶらで楽しめ、屋上には射的や輪投げなどの縁日屋台も併設。準備・片付け不要。",
                 groceryLevel: "最高",
@@ -367,7 +356,7 @@
                 stayTime: "約3〜4時間",
                 afterParty: "そのまま海岸を散策するか、藤沢駅まで戻ってからの居酒屋・バーでの2次会が定番ルートです。",
                 priceMin: 2200,
-                priceDesc: "約2,200円〜3,300円",
+                priceDesc: "約2,200円〜3,300円（区画による）",
                 foodRules: "持ち込み完全自由。",
                 gear: "ラグジュアリーな機材一式完備。ゴミ回収費用込み。手ぶらで帰宅可能。",
                 groceryLevel: "良",
@@ -436,7 +425,7 @@
                 stayTime: "約4時間 (半日)",
                 afterParty: "長津田駅や町田駅へバス・電車で出れば、居酒屋等の選択肢が豊富にあります。",
                 priceMin: 2200,
-                priceDesc: "約2,200円〜2,500円",
+                priceDesc: "約2,200円〜2,500円（機材レンタルパッケージ利用時）",
                 foodRules: "食材・飲料の持ち込み完全自由。",
                 gear: "テントやコンロ一式が揃うパッケージあり。器材の洗浄は不要、ゴミも有料回収してもらえるため身軽に帰宅可能。",
                 groceryLevel: "最高",
@@ -447,11 +436,11 @@
             }
         ];
 
-        // State Management
+        // State Management (初期選択をID:3 KUGENUMAに設定)
         let state = {
             filter: 'all',
             sort: 'default',
-            selectedId: 3,
+            selectedId: 3, 
             chartInstance: null
         };
 
@@ -532,7 +521,7 @@
 
         // Data Helper
         function getFilteredData() {
-            let data = [...bbqData]; // コピーを作成してソートに備える
+            let data = [...bbqData]; 
             
             // Filtering
             if (state.filter === 'new') {
@@ -545,6 +534,7 @@
             if (state.sort === 'priceAsc') {
                 data.sort((a, b) => a.priceMin - b.priceMin);
             } else {
+                // おすすめ順: KUGENUMAがトップに来るように
                 data.sort((a, b) => {
                     if (a.isRecommended === b.isRecommended) {
                         return a.id - b.id;
@@ -625,7 +615,6 @@
 
             const newBadge = item.isNew ? `<span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">NEW OPEN</span>` : '';
             
-            // おすすめ用の強調ヘッダー＆ボタンデザイン
             const recHeader = item.isRecommended ? `
                 <div class="bg-gradient-to-r from-amber-100 to-orange-100 border border-amber-300 text-amber-900 px-4 py-3 rounded-lg font-bold text-sm mb-4 flex items-center gap-2 shadow-sm">
                     <span class="text-xl animate-bounce">👑</span> 個人的にイチオシの施設です！
@@ -640,7 +629,6 @@
 
             detailContainer.innerHTML = `
                 <div class="fade-in flex-1 flex flex-col">
-                    <!-- スマホ用：リストへ戻るボタン -->
                     <button onclick="document.getElementById('filter-container').scrollIntoView({behavior: 'smooth', block: 'start'})" class="md:hidden flex items-center gap-1 text-stone-600 bg-stone-100 hover:bg-stone-200 px-4 py-2 rounded-full text-xs font-bold mb-5 w-fit transition-colors border border-stone-200">
                         <span class="text-lg leading-none">↑</span> 施設一覧へ戻る
                     </button>
@@ -660,7 +648,6 @@
                     
                     <h2 class="text-2xl md:text-3xl font-extrabold text-stone-900 mb-4 leading-tight">${item.name}</h2>
                     
-                    <!-- ボタングループ (ルート検索追加) -->
                     <div class="flex flex-wrap gap-2 mb-6 w-full">
                         <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="flex-1 md:flex-none inline-flex items-center justify-center gap-1 text-sm px-5 py-3 rounded-xl transition-all font-bold ${btnClass}">
                             公式サイトで詳細を見る <span class="text-xs">↗</span>
